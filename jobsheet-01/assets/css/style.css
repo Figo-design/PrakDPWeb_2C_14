@@ -86,7 +86,6 @@ main section:nth-of-type(2) article h3 {
     color: #55677a;
     margin-bottom: 0.5rem;
 }
-
 main section:nth-of-type(2) article p {
     font-size: 1.8rem;
     font-weight: 700;
@@ -184,16 +183,48 @@ footer {
     font-size: 0.9rem;
 }
 
-/* ===== Hamburger Menu (checkbox hack) ===== */
-.nav-toggle {
-    display: none;
-}
-
+/* ===== Hamburger menu (JS-driven, menggantikan checkbox hack) ===== */
 .nav-toggle-label {
     display: none;
     font-size: 1.6rem;
     color: #fff;
+    background: none;
+    border: none;
     cursor: pointer;
+}
+
+/* ===== Pesan Error Validasi ===== */
+.error {
+    display: block;
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* ===== Kolom Pencarian ===== */
+.search-box {
+    margin-bottom: 1rem;
+}
+.search-box label,
+.search-box input {
+    width: 100%;
+    max-width: 320px;
+}
+.search-box label {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+.search-box input {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+}
+
+.table-count {
+    margin-bottom: 0.75rem;
+    color: #55677a;
+    font-size: 0.9rem;
 }
 
 /* ===== Tabel Responsif ===== */
@@ -221,14 +252,16 @@ footer {
     }
 
     header nav {
-        display: none;
-        width: 100%;
-        order: 3;
-        margin-top: 1rem;
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
     }
 
-    .nav-toggle:checked ~ nav {
-        display: block;
+    header nav.nav-open {
+        max-height: 300px;
+        opacity: 1;
     }
 
     header nav ul {
